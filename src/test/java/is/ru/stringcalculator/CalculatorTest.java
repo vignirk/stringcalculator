@@ -73,5 +73,15 @@ public class CalculatorTest {
         public void testMultipleDelimitersOfAnyLength(){
         assertEquals(7, Calculator.add("//[**][%%%]\n1**2%%%3**1"));
         }
-	
+
+	@Test(expected = IllegalArgumentException.class)
+        public void testInsertNegativeNumbers(){
+        Calculator.add("-1,-2,0,-3");
+        }
+
+
+	@Test(expected = IllegalArgumentException.class)
+        public void testInsertNegativeNumbers2(){
+        Calculator.add("//[**][%%%]\n1**2%%%-3**1");
+   	}
 }
