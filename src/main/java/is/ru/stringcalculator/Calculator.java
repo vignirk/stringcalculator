@@ -8,12 +8,6 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
-		else if(text.contains("-"))
-                {
-                	if(text.contains("//")) text = trim(text);
-                	String negas = negatives(splitNumbers(text));
-                	throw new IllegalArgumentException(negas);
-                }
 		else if(text.contains("//"))
                 {
                 	text = trim(text);
@@ -70,7 +64,12 @@ public class Calculator {
     private static int sum(String[] numbers){
  	    int total = 0;
         for(String number : numbers){
-		    if (toInt(number) <= 1000)
+		    if(toInt(number) < 0)
+        	    {
+       			String negas = negatives(numbers);
+                    	throw new IllegalArgumentException(negas);
+            	    }	
+		    else if (toInt(number) <= 1000)
     		    {
         		total += toInt(number);
         	    }

@@ -49,7 +49,6 @@ public class CalculatorTest {
         assertEquals(5, Calculator.add("//*\n1*2*2"));
         }
 
-
         @Test
         public void testLowerThanThousund(){
         assertEquals(1003, Calculator.add("1001,2,2,999,2014"));
@@ -61,17 +60,18 @@ public class CalculatorTest {
         }
 	
 	@Test
-        public void DelimitersOfAnyLength(){
+        public void testDelimitersOfAnyLength(){
         assertEquals(6, Calculator.add("//[***]\n1***2***3"));
         }
 
 	@Test
-        public void MultipleDelimiters(){
+        public void testMultipleDelimiters(){
         assertEquals(6, Calculator.add("//[*][%]\n1*2%3"));
         }
 
 	@Test
-        public void MultipleDelimitersOfAnyLength(){
+        public void testMultipleDelimitersOfAnyLength(){
         assertEquals(7, Calculator.add("//[**][%%%]\n1**2%%%3**1"));
         }
+	
 }
