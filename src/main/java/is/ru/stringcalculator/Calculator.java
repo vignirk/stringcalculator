@@ -6,11 +6,15 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+		else if(text.contains("-"))
+                {
+                	if(text.contains("//")) text = trim(text);
+                	String negas = negatives(splitNumbers(text));
+                	throw new IllegalArgumentException(negas);
+                }
 		else if(text.contains("//"))
                 {
-                	String delimiter = text.substring(2, 3);
-                	text = text.substring(5);
-                	text = text.replaceAll(delimiter, ",");
+                	text = trim(text);
                 	return sum(splitNumbers(text));
                 }
 		else if(text.contains(",") || text.contains("\\n")){
@@ -19,6 +23,25 @@ public class Calculator {
 		else
 			return 1;
 	}
+
+	private static String trim(String text)
+        {
+        	String delimiter = text.substring(2, 3);
+        	text = text.substring(5);
+        	text = text.replaceAll(delimiter, ",");
+        	return text;
+        }
+        
+        private static String negatives(String[] numbers){
+        	String negas = "";
+        	for(String number : numbers){
+        		if(toInt(number) < 0)
+        		{
+        			negas += number + ",";
+        		}
+            }
+            return negas;
+        }
 
 	private static int toInt(String number){
 		return Integer.parseInt(number);

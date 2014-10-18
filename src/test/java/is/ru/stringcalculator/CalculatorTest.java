@@ -38,6 +38,7 @@ public class CalculatorTest {
         public void differentDelimiter(){
         assertEquals(8, Calculator.add("//;\\n1;2;2;3"));
 	}
-	
+
+
 
 }
