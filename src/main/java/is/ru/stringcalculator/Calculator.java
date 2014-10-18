@@ -34,7 +34,7 @@ public class Calculator {
         	if(!rules.substring(2, 3).equals("["))
         	{
         		String delimiter = rules.substring(2, 3);
-        		text = text.replaceAll(delimiter, ",");
+        		text = text.replaceAll(Pattern.quote(delimiter), ",");
         	}
         	else
         	{

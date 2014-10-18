@@ -29,15 +29,26 @@ public class CalculatorTest {
     	assertEquals(6, Calculator.add("1,2,3"));
 	}
 
-	 @Test
+	@Test
     	public void testNewLine(){
         assertEquals(6, Calculator.add("1\n2,3"));
     	}
+
+	 @Test
+        public void testNewLine2(){
+        assertEquals(12, Calculator.add("1\n2,3,4\n2"));
+        }
 
 	@Test
         public void testDifferentDelimiter(){
         assertEquals(8, Calculator.add("//;\n1;2;2;3"));
 	}
+
+	@Test
+        public void testDifferentDelimiter2(){
+        assertEquals(5, Calculator.add("//*\n1*2*2"));
+        }
+
 
         @Test
         public void testLowerThanThousund(){
