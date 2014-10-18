@@ -35,10 +35,14 @@ public class CalculatorTest {
     	}
 
 	@Test
-        public void differentDelimiter(){
+        public void testDifferentDelimiter(){
         assertEquals(8, Calculator.add("//;\\n1;2;2;3"));
 	}
 
+        @Test
+        public void testLowerThanThousund(){
+        assertEquals(1003, Calculator.add("1001,2,2,999,2014"));
+        }
 
 
 }
