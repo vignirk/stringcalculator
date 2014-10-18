@@ -44,5 +44,23 @@ public class CalculatorTest {
         assertEquals(1003, Calculator.add("1001,2,2,999,2014"));
         }
 
+	@Test
+        public void testLowerThanThousund2(){
+        assertEquals(0, Calculator.add("0,2014"));
+        }
+	
+	@Test
+        public void DelimitersOfAnyLength(){
+        assertEquals(6, Calculator.add("//[***]\n1***2***3"));
+        }
 
+	@Test
+        public void MultipleDelimiters(){
+        assertEquals(6, Calculator.add("//[*][%]\n1*2%3"));
+        }
+
+	@Test
+        public void MultipleDelimitersOfAnyLength(){
+        assertEquals(7, Calculator.add("//[**][%%%]\n1**2%%%3**1"));
+        }
 }
