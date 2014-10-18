@@ -6,6 +6,13 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+		else if(text.contains("//"))
+                {
+                	String delimiter = text.substring(2, 3);
+                	text = text.substring(5);
+                	text = text.replaceAll(delimiter, ",");
+                	return sum(splitNumbers(text));
+                }
 		else if(text.contains(",") || text.contains("\\n")){
 			return sum(splitNumbers(text));
 		}
