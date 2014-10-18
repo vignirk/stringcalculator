@@ -1,4 +1,6 @@
 package is.ru.stringcalculator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Calculator {
 
@@ -26,14 +28,28 @@ public class Calculator {
 
 	private static String trim(String text)
         {
-        	String delimiter = text.substring(2, 3);
-        	text = text.substring(5);
-        	text = text.replaceAll(delimiter, ",");
+        	
+        	String rules = text.substring(0, text.indexOf('\n'));
+        	text = text.substring(text.indexOf('\n')+1);
+        	if(!rules.substring(2, 3).equals("["))
+        	{
+        		String delimiter = rules.substring(2, 3);
+        		text = text.replaceAll(delimiter, ",");
+        	}
+        	else
+        	{
+        		Pattern p = Pattern.compile("\\[([^]]*)\\]"); // Finnum allt i sviga
+            	Matcher m = p.matcher(rules);
+            	while (m.find())
+            	{
+            	  text = text.replaceAll(Pattern.quote(m.group(1)), ","); // Breytum ollu i kommu
+            	}
+        	}
         	return text;
-        }
-        
+        }	
+
         private static String negatives(String[] numbers){
-        	String negas = "";
+        	String negas = "Negatives not allowed: ";
         	for(String number : numbers){
         		if(toInt(number) < 0)
         		{
